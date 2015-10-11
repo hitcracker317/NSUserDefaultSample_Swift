@@ -41,6 +41,16 @@ class ViewController: UIViewController,UIPickerViewDelegate,UITextFieldDelegate{
         birthDayTextField.inputView = pickerBirthDay
         sexTextField.inputView = pickerSex
         bornTextField.inputView = pickerBorn
+        
+        //保存した値を取得
+        let ud = NSUserDefaults.standardUserDefaults()
+        
+        
+        nameTextField.text = ud.stringForKey("name")
+        birthDayTextField.text = ud.stringForKey("birthday")
+        sexTextField.text = ud.stringForKey("sex")
+        bornTextField.text = ud.stringForKey("born")
+
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -145,5 +155,28 @@ class ViewController: UIViewController,UIPickerViewDelegate,UITextFieldDelegate{
         }
     }
 
+    @IBAction func saveContens(sender: AnyObject) {
+        //save
+        let ud = NSUserDefaults.standardUserDefaults() //NSUserDefaults生成
+        //保存(キーに値をセット)
+        ud.setObject(nameTextField.text, forKey: "name")
+        ud.setObject(birthDayTextField.text, forKey: "birthday")
+        ud.setObject(sexTextField.text, forKey: "sex")
+        ud.setObject(bornTextField.text, forKey: "born")
+        ud.synchronize()
+    }
+    @IBAction func deleteContens(sender: AnyObject) {
+        //削除(キーを指定)
+        let ud = NSUserDefaults.standardUserDefaults()
+        ud.removeObjectForKey("name")
+        ud.removeObjectForKey("birthday")
+        ud.removeObjectForKey("sex")
+        ud.removeObjectForKey("born")
+        
+        nameTextField.text = ""
+        birthDayTextField.text = ""
+        sexTextField.text = ""
+        bornTextField.text = ""
+    }
 }
 
