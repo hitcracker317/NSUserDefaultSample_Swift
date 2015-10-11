@@ -8,8 +8,9 @@
 
 import UIKit
 
-class ViewController: UIViewController,UIPickerViewDelegate{
+class ViewController: UIViewController,UIPickerViewDelegate,UITextFieldDelegate{
 
+    @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var birthDayTextField: UITextField!
     @IBOutlet weak var sexTextField: UITextField!
     @IBOutlet weak var bornTextField: UITextField!
@@ -25,10 +26,7 @@ class ViewController: UIViewController,UIPickerViewDelegate{
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        
-        //
-        
-        
+        self.nameTextField.delegate = self
         
         pickerBirthDay.delegate = self
         pickerSex.delegate = self
@@ -43,6 +41,12 @@ class ViewController: UIViewController,UIPickerViewDelegate{
         birthDayTextField.inputView = pickerBirthDay
         sexTextField.inputView = pickerSex
         bornTextField.inputView = pickerBorn
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        //キーボードのリターンが押された際にキーボードを閉じる
+        nameTextField.resignFirstResponder();
+        return true;
     }
     
     //ピッカーの種類数を指定

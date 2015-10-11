@@ -67,6 +67,7 @@
                     <connections>
                         <outlet property="birthDayTextField" destination="QWq-m0-wHa" id="0n5-RG-PaE"/>
                         <outlet property="bornTextField" destination="OBS-R0-tkA" id="Ngj-n9-fk2"/>
+                        <outlet property="nameTextField" destination="nuh-vI-6zO" id="rRa-Uj-fpi"/>
                         <outlet property="sexTextField" destination="AlD-Us-E6B" id="xd9-Ez-JT8"/>
                     </connections>
                 </viewController>
